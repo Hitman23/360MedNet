@@ -7,7 +7,10 @@
               <div class="card">
             <div class="container">
                 <br>
-                <h2>{{ object.title }}</h2>
+                <h4>{{ object.title }}</h4>
+                {% if object.image %}
+                    <img height="400px" width="300px" src="{{ object.image.url }}">
+                {% endif %}
                 <h5><span class="flow-text">Reason for sharing</span></h5>
                 {{ object.purpose }}
                 <h5><span class="flow-text">Chief Complaint</span></h5>

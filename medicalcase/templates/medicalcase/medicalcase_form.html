@@ -19,7 +19,7 @@
             </div>
             <div class="card-content">
             <span class="card-title">New Medical Case</span>
-              <p class="blue-grey-text"><form method="POST">
+              <p class="blue-grey-text"><form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
    {% form form=form %}
 

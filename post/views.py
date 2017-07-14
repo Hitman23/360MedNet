@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Post, Comment
 from userprofile.models import Doctor
-from .forms import PostForm, CommentForm, PhotoForm
+from .forms import PostForm, CommentForm
 from django.views.generic.edit import DeleteView, ModelFormMixin
 from django.views.generic.edit import UpdateView
 from django.views.generic.detail import DetailView

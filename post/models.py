@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=200)
     post_content = models.TextField()
+    image = models.ImageField(null=True, blank=True, height_field="height", width_field="width")
+    height = models.IntegerField(default=0)
+    width = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     doctor = models.ForeignKey(Doctor, models.DO_NOTHING, blank=False, null=False)

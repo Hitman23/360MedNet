@@ -11,7 +11,7 @@
           <div class="card card blue-grey darken-1 card-content white-text">
             <div class="card-content">
              <div class="container">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
            {% form form=form %}{% endform %}
 

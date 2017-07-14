@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'post_content')
+        fields = ('title', 'post_content', 'image')
 
 
 class CommentForm(forms.ModelForm):
@@ -20,12 +20,12 @@ class CommentForm(forms.ModelForm):
         fields = ('comment_content',)
 
 
-class PhotoForm(forms.ModelForm):
-    image = forms.ImageField()
-
-    class Meta:
-        model = Photo
-        fields = ('image',)
-
-
-ImageInlineFormset = forms.inlineformset_factory(Post, Photo, fields=('image',), extra=2, min_num=1)
+# class PhotoForm(forms.ModelForm):
+#     image = forms.ImageField()
+#
+#     class Meta:
+#         model = Photo
+#         fields = ('image',)
+#
+#
+# ImageInlineFormset = forms.inlineformset_factory(Post, Photo, fields=('image',), extra=2, min_num=1)

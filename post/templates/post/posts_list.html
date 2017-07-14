@@ -13,19 +13,24 @@
             <div class="col l12 m12 s12">
               <div class="card">
             <div class="container">
-                <br><h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                <h5 style="padding-top: 10px"> {{ post.title }} </h5>
+                {% if post.image %}
+                <img height="200px" width="350px" src="{{ post.image.url }}">
+                {% endif %}
             <br>{{ post.post_content }}
-            <br><br>
+
 
                   <table><tr><td>
                     <br><img class="round" src="{{post.doctor.avatar.url }}" class="responsive-img img-fluid"
                      style='max-height:70px;'>
                 </td>
-                        <td><br>Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}
+                        <td>Dr. {{ post.doctor.first_name }} {{ post.doctor.last_name }}
             <br>{{ post.doctor.profession}} at {{ post.doctor.hospital}}
             <br>on {{ post.created_at}}
                     </td>
                 </tr></table>
+            <hr>
+                <p style="padding-bottom: 10px"><a href="{{ post.get_absolute_url }}">comment</a></p>
                  </div>
               </div>
             </div>

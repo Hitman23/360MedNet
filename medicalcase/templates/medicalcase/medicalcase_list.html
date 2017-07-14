@@ -28,7 +28,12 @@
               <div class="card">
             <div class="container">
                 <br>
-                <br><span class="flow-text" ><a href="{% url 'medical_case-detail' medical_case.id %}">{{ medical_case.title }}</a></span>
+                <br><span class="flow-text" >
+                        <a href="{% url 'medical_case-detail' medical_case.id %}">{{ medical_case.title }}</a>
+                    </span><br>
+                {% if medical_case.image %}
+                    <img height="300px" width="500px" src="{{ medical_case.image.url }}">
+                {% endif %}
                 <h5>Purpose</h5>
                 {{ medical_case.purpose }}
                 <h5>Chief Complaint</h5>
