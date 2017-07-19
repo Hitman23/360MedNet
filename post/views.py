@@ -12,6 +12,7 @@ from django.views.generic.list import ListView
 from event.models import Event
 from medicalcase.models import MedicalCase
 from django.core.urlresolvers import reverse_lazy, reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class PostCreate(CreateView):
@@ -47,8 +48,18 @@ class PostList(ListView):
     template_name = 'post/posts_list.html'
 
     def render_to_response(self, context, **response_kwargs):
-        all_posts = Post.objects.order_by('-created_at').all()
-        context = {'all_posts': all_posts}
+        all_posts = Post.objects.all()
+        paginator = Paginator(all_posts, 2)
+        page = self.request.GET.get('page', 1)
+
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+        context = {'all_posts': posts}
 
         return self.response_class(request=self.request, template=self.get_template_names(), context=context,
                                    using=self.template_engine)

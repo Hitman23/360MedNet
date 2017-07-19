@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import MedicalCase, MedicalCaseCategory, Comment
 from userprofile.models import Doctor
@@ -30,6 +31,8 @@ class MedicalCaseCreate(CreateView):
 class MedicalCaseList(ListView):
     model = MedicalCase
     form_class = MedicalCaseSearchForm
+    paginate_by = 5
+    context_object_name = 'casses'
     template_name = 'medicalcase/medicalcase_list.html'
 
     def get_queryset(self):
